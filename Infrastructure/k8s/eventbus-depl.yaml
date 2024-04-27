@@ -1,0 +1,33 @@
+#Deployment for eventbus
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eventbus-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: eventbus
+  template:
+    metadata:
+      labels:
+        app: eventbus
+    spec:
+      containers:
+        - name: eventbus
+          image: bilal567/event-bus
+---
+#Cluster IP Service for event
+apiVersion: v1
+kind: Service
+metadata:
+  name: eventbus-cluster-svc
+spec:
+  selector:
+    app: eventbus
+  ports: 
+    - name: eventbus
+      protocol: TCP
+      port: 4005
+      targetPort: 4005
+

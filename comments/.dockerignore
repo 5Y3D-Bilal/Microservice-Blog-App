@@ -1,0 +1,2 @@
+# So the dependencies dont get copyed from our local hard drive. Because Image will install it for us..
+node_modules
